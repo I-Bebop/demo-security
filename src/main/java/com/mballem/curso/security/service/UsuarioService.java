@@ -35,8 +35,8 @@ public class UsuarioService implements UserDetailsService {
 	private UsuarioRepository repository;
 	@Autowired
 	private Datatables datatables;
-//	@Autowired
-//	private EmailService emailService;
+	@Autowired
+	private EmailService emailService;
 	
 	@Transactional(readOnly = true)
 	public Usuario buscarPorEmail(String email) {
@@ -123,7 +123,7 @@ public class UsuarioService implements UserDetailsService {
 	
 	public void emailDeConfirmacaoDeCadastro(String email) throws MessagingException {
 		String codigo = Base64Utils.encodeToString(email.getBytes());
-//		emailService.enviarPedidoDeConfirmacaoDeCadastro(email, codigo);
+		emailService.enviarPedidoDeConfirmacaoDeCadastro(email, codigo);
 	}
 	
 	@Transactional(readOnly = false)
